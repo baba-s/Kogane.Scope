@@ -35,6 +35,25 @@ using ( new HandlesColorScope( Color.white ) )
 }
 ```
 
+### LoadPrefabContentsScope
+
+```cs
+// 通常
+var prefab = PrefabUtility.LoadPrefabContents( "Assets/Cube.prefab" );
+
+prefab.AddComponent<BoxCollider>();
+
+PrefabUtility.SaveAsPrefabAsset( prefab, "Assets/Cube.prefab" );
+PrefabUtility.UnloadPrefabContents( prefab );
+
+// UniScope
+using ( var scope = new LoadPrefabContentsScope( "Assets/Cube.prefab" ) )
+{
+    scope.Prefab.AddComponent<BoxCollider>();
+    scope.IsSave = true;
+}
+```
+
 ### LockReloadAssembliesScope
 
 ```cs
