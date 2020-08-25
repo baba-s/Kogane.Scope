@@ -115,3 +115,19 @@ using ( new GUIColorScope( Color.white ) )
     //...
 }
 ```
+
+### LabelWidthScope
+
+```cs
+// 通常
+var oldLabelWidth = EditorGUIUtility.labelWidth;
+EditorGUIUtility.labelWidth = 32;
+EditorGUILayout.TextField( "Name", "ピカチュウ" );
+EditorGUIUtility.labelWidth = oldLabelWidth;
+
+// UniScope
+using ( new LabelWidthScope( 32 ) )
+{
+    EditorGUILayout.TextField( "Name", "ピカチュウ" );
+}
+```
