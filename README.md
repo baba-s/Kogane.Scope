@@ -54,6 +54,30 @@ using ( var scope = new LoadPrefabContentsScope( "Assets/Cube.prefab" ) )
 }
 ```
 
+### LogScope
+
+```cs
+#if ENABLE_RELEASE
+
+// リリースビルドの時はログ出力を無効化
+LogScope.OnStart    = null;
+LogScope.OnComplete = null;
+
+#else
+
+LogScope.OnStart    = message => Debug.Log( $"{message} 開始" );
+LogScope.OnComplete = message => Debug.Log( $"{message} 終了" );
+
+#endif
+
+using ( new LogScope( "ピカチュウ" ) )
+{
+    Debug.Log( "カイリュー" );
+    Debug.Log( "ヤドラン" );
+    Debug.Log( "ピジョン" );
+}
+```
+
 ### LockReloadAssembliesScope
 
 ```cs
