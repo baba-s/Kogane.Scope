@@ -155,3 +155,50 @@ using ( new LabelWidthScope( 32 ) )
     EditorGUILayout.TextField( "Name", "ピカチュウ" );
 }
 ```
+
+### ProgressScope
+
+```cs
+using Kogane;
+using System.Collections;
+using Unity.EditorCoroutines.Editor;
+using UnityEditor;
+using UnityEngine;
+
+public sealed class Example : EditorWindow
+{
+    [MenuItem( "Tools/Open" )]
+    private static void Open()
+    {
+        GetWindow<Example>();
+    }
+
+    private void OnGUI()
+    {
+        if ( GUILayout.Button( "開始" ) )
+        {
+            EditorCoroutineUtility.StartCoroutine( OnUpdate(), this );
+        }
+    }
+
+    private static IEnumerator OnUpdate()
+    {
+        const int count = 2000;
+
+        using ( var scope = new ProgressScope( "ここにタスク名" ) )
+        {
+            for ( var i = 0; i < count; i++ )
+            {
+                scope.Report
+                (
+                    currentStep: i,
+                    totalSteps: count,
+                    description: $"{i + 1} / {count}"
+                );
+
+                yield return null;
+            }
+        }
+    }
+}
+```
