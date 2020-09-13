@@ -202,3 +202,69 @@ public sealed class Example : EditorWindow
     }
 }
 ```
+
+### SetStackTraceLogTypeScope
+
+```cs
+using Kogane;
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    private void Awake()
+    {
+        // 通常のログはスタックトレースなし
+        using ( new SetStackTraceLogTypeScope( LogType.Log, StackTraceLogType.None ) )
+        {
+            Debug.Log( "ピカチュウ" );
+        }
+
+        // 通常のログはスタックトレースあり
+        using ( new SetStackTraceLogTypeScope( LogType.Log, StackTraceLogType.ScriptOnly ) )
+        {
+            Debug.Log( "ピカチュウ" );
+        }
+        
+        // 通常のログはスタックトレースあり（ネイティブ）
+        using ( new SetStackTraceLogTypeScope( LogType.Log, StackTraceLogType.Full ) )
+        {
+            Debug.Log( "ピカチュウ" );
+        }
+    }
+}
+```
+
+```cs
+using Kogane;
+using UnityEngine;
+
+public class Example : MonoBehaviour
+{
+    private void Awake()
+    {
+        // スタックトレースなし
+        using ( new SetStackTraceLogTypeScope( StackTraceLogType.None ) )
+        {
+            Debug.Log( "ピカチュウ" );
+            Debug.LogWarning( "ピカチュウ" );
+            Debug.LogError( "ピカチュウ" );
+        }
+
+        // スタックトレースあり
+        using ( new SetStackTraceLogTypeScope( StackTraceLogType.ScriptOnly ) )
+        {
+            Debug.Log( "ピカチュウ" );
+            Debug.LogWarning( "ピカチュウ" );
+            Debug.LogError( "ピカチュウ" );
+        }
+        
+        // スタックトレースあり（ネイティブ）
+        using ( new SetStackTraceLogTypeScope( StackTraceLogType.Full ) )
+        {
+            Debug.Log( "ピカチュウ" );
+            Debug.LogWarning( "ピカチュウ" );
+            Debug.LogError( "ピカチュウ" );
+        }
+    }
+}
+```
