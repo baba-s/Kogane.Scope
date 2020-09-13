@@ -140,6 +140,22 @@ using ( new GUIColorScope( Color.white ) )
 }
 ```
 
+### GUIEnabledScope
+
+```cs
+// 通常
+var oldEnabled = GUI.enabled;
+GUI.enabled = false;
+//...
+GUI.enabled = oldEnabled;
+
+// UniScope
+using ( new GUIEnabledScope( false ) )
+{
+    //...
+}
+```
+
 ### LabelWidthScope
 
 ```cs
