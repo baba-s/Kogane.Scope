@@ -48,10 +48,12 @@ namespace Kogane
 			Progress.Finish( Id, status );
 		}
 
+#if UNITY_2020_2_OR_NEWER
 		public int GetCurrentStep()
 		{
 			return Progress.GetCurrentStep( Id );
 		}
+#endif
 
 		public string GetDescription()
 		{
@@ -72,11 +74,13 @@ namespace Kogane
 		{
 			return Progress.GetParentId( Id );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public int GetPriority()
 		{
 			return Progress.GetPriority( Id );
 		}
+#endif
 
 		public float GetProgress()
 		{
@@ -102,21 +106,25 @@ namespace Kogane
 		{
 			return Progress.GetStatus( Id );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public string GetStepLabel()
 		{
 			return Progress.GetStepLabel( Id );
 		}
+#endif
 
 		public Progress.TimeDisplayMode GetTimeDisplayMode()
 		{
 			return Progress.GetTimeDisplayMode( Id );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public int GetTotalSteps()
 		{
 			return Progress.GetTotalSteps( Id );
 		}
+#endif
 
 		public long GetUpdateDateTime()
 		{
@@ -127,7 +135,8 @@ namespace Kogane
 		{
 			return Progress.IsCancellable( Id );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public bool IsPausable()
 		{
 			return Progress.IsPausable( Id );
@@ -137,32 +146,43 @@ namespace Kogane
 		{
 			return Progress.Pause( Id );
 		}
+#endif
 
 		public void RegisterCancelCallback( Func<bool> callback )
 		{
 			Progress.RegisterCancelCallback( Id, callback );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public void RegisterPauseCallback( Func<bool, bool> callback )
 		{
 			Progress.RegisterPauseCallback( Id, callback );
 		}
+#endif
 
 		public void Report( float progress )
 		{
 			Progress.Report( Id, progress );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public void Report( int currentStep, int totalSteps )
 		{
 			Progress.Report( Id, currentStep, totalSteps );
 		}
+#else
+		public void Report( int currentStep )
+		{
+			Progress.Report( Id, currentStep );
+		}
+#endif
 
 		public void Report( float progress, string description )
 		{
 			Progress.Report( Id, progress, description );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public void Report
 		(
 			int    currentStep,
@@ -172,17 +192,19 @@ namespace Kogane
 		{
 			Progress.Report( Id, currentStep, totalSteps, description );
 		}
-
+		
 		public bool Resume()
 		{
 			return Progress.Resume( Id );
 		}
+#endif
 
 		public void SetDescription( string description )
 		{
 			Progress.SetDescription( Id, description );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public void SetPriority( Progress.Priority priority )
 		{
 			Progress.SetPriority( Id, priority );
@@ -192,16 +214,19 @@ namespace Kogane
 		{
 			Progress.SetPriority( Id, priority );
 		}
+#endif
 
 		public void SetRemainingTime( long seconds )
 		{
 			Progress.SetRemainingTime( Id, seconds );
 		}
-
+		
+#if UNITY_2020_2_OR_NEWER
 		public void SetStepLabel( string label )
 		{
 			Progress.SetStepLabel( Id, label );
 		}
+#endif
 
 		public void SetTimeDisplayMode( Progress.TimeDisplayMode displayMode )
 		{
