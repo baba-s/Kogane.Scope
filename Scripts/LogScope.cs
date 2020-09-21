@@ -32,7 +32,7 @@ namespace Kogane
 		/// <summary>
 		/// using ブロック開始時にログを出力します
 		/// </summary>
-		public LogScope( string message )
+		private LogScope( string message )
 		{
 			m_message = message;
 			OnStart?.Invoke( message );
@@ -44,6 +44,21 @@ namespace Kogane
 		public void Dispose()
 		{
 			OnComplete?.Invoke( m_message );
+		}
+
+		//==============================================================================
+		// 関数(static)
+		//==============================================================================
+		/// <summary>
+		/// LogScope のインスタンスを作成して返します
+		/// </summary>
+		public static LogScope Create( string message )
+		{
+#if DISABLE_LOG_SCOPE
+			return null;
+#else
+			return new LogScope( message );
+#endif
 		}
 	}
 }
