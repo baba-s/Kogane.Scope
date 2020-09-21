@@ -70,13 +70,15 @@ LogScope.OnComplete = message => Debug.Log( $"{message} 終了" );
 
 #endif
 
-using ( new LogScope( "ピカチュウ" ) )
+using ( LogScope.Create( "ピカチュウ" ) )
 {
     Debug.Log( "カイリュー" );
     Debug.Log( "ヤドラン" );
     Debug.Log( "ピジョン" );
 }
 ```
+
+* `DISABLE_LOG_SCOPE` を定義することで LogScope.Create でインスタンスが生成されなくなります  
 
 ### LockReloadAssembliesScope
 
