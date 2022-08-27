@@ -1,4 +1,4 @@
-# UniScope
+# Kogane Scope
 
 開始と終了がある処理を using ステートメントで使用できるようにすることで終了処理の呼び出し漏れを防ぐ機能
 
@@ -78,7 +78,7 @@ using ( LogScope.Create( "ピカチュウ" ) )
 }
 ```
 
-* `DISABLE_LOG_SCOPE` を定義することで LogScope.Create でインスタンスが生成されなくなります  
+* `DISABLE_LOG_SCOPE` を定義することで LogScope.Create でインスタンスが生成されなくなります
 
 ### LockReloadAssembliesScope
 

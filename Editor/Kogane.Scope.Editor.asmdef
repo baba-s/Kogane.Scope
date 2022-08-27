@@ -1,5 +1,5 @@
 {
-    "name": "UniScope.Editor",
+    "name": "Kogane.Scope.Editor",
     "references": [],
     "includePlatforms": [
         "Editor"
