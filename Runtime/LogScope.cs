@@ -57,7 +57,7 @@ namespace Kogane
 #if DISABLE_LOG_SCOPE
 			return null;
 #else
-            return new LogScope( message );
+            return new( message );
 #endif
         }
     }
